@@ -17,7 +17,7 @@
 
 ## 🟡 Kalan adımlar
 1. **App Store Connect'te uygulama kaydı** (senin hesabınla, tarayıcıdan) — Uygulamalar → + → Yeni Uygulama
-   - Platform: iOS · Ad: **Mhysai: Maaş Sayacı** · Birincil dil: Türkçe · Paket kimliği: `com.gokberk.Mesai` · SKU: `mhysai-ios` · Kullanıcı erişimi: Tam erişim
+   - Platform: iOS · Ad: **Mhysai: Maaş Sayacı** · Birincil dil: Türkçe · Paket kimliği: `com.gokberk.mhysai` · SKU: `mhysai-ios` · Kullanıcı erişimi: Tam erişim
 2. **Derleme yükleme** — `xcodebuild archive` + `-exportArchive` (App Store Connect'e upload). Kayıt açılmadan yükleme reddedilir.
 3. **TestFlight'ta kendi telefonunda dene** — gerçek mesai saatinde sayaç, gizlilik modu, paylaşım.
 4. **Sürüm sayfasını doldur** — `metadata.md`'deki metinler, `Screenshots/` görselleri, App Privacy: "Veri Toplanmıyor", yaş 4+, fiyat: ücretsiz → **İncelemeye gönder**.

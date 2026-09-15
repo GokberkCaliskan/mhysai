@@ -381,10 +381,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gokberk.MesaiTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gokberk.mhysaiTests;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mesai.app/Mesai";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mhysai.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mhysai";
 			};
 			name = Release;
 		};
@@ -404,7 +404,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gokberk.Mesai;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gokberk.mhysai;
+				PRODUCT_MODULE_NAME = Mesai;
+				PRODUCT_NAME = Mhysai;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -429,7 +431,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gokberk.Mesai;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gokberk.mhysai;
+				PRODUCT_MODULE_NAME = Mesai;
+				PRODUCT_NAME = Mhysai;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -448,10 +452,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gokberk.MesaiTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gokberk.mhysaiTests;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mesai.app/Mesai";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mhysai.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mhysai";
 			};
 			name = Debug;
 		};

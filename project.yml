@@ -17,7 +17,9 @@ targets:
     sources: [Mesai]
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.gokberk.Mesai
+        PRODUCT_BUNDLE_IDENTIFIER: com.gokberk.mhysai
+        PRODUCT_NAME: Mhysai
+        PRODUCT_MODULE_NAME: Mesai
         INFOPLIST_KEY_CFBundleDisplayName: "Mhysai"
         INFOPLIST_FILE: Mesai/Resources/Info.plist
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.finance
@@ -38,7 +40,9 @@ targets:
       - target: Mesai
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.gokberk.MesaiTests
+        PRODUCT_BUNDLE_IDENTIFIER: com.gokberk.mhysaiTests
+        TEST_HOST: $(BUILT_PRODUCTS_DIR)/Mhysai.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mhysai
+        BUNDLE_LOADER: $(TEST_HOST)
         GENERATE_INFOPLIST_FILE: YES
 schemes:
   Mesai:
