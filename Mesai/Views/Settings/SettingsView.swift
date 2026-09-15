@@ -14,8 +14,8 @@ struct SettingsView: View {
                 Section("Hakkında") {
                     NavigationLink("Nasıl hesaplanıyor?") { CalculationInfoView() }
                     NavigationLink("Gizlilik") { PrivacyPolicyView() }
-                    if let url = AppInfo.feedbackURL {
-                        Link(destination: url) { Label("Geri bildirim gönder", systemImage: "envelope") }
+                    Link(destination: AppInfo.supportURL) {
+                        Label("Destek ve geri bildirim", systemImage: "bubble.left.and.text.bubble.right")
                     }
                     if let url = AppInfo.reviewURL {
                         Link(destination: url) { Label("Uygulamayı değerlendir", systemImage: "star") }

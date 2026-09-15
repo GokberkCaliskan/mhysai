@@ -18,7 +18,7 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.gokberk.Mesai
-        INFOPLIST_KEY_CFBundleDisplayName: "Mesai"
+        INFOPLIST_KEY_CFBundleDisplayName: "Mhysai"
         INFOPLIST_FILE: Mesai/Resources/Info.plist
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.finance
         INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait

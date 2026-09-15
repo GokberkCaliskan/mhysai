@@ -396,7 +396,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mesai/Resources/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Mesai;
+				INFOPLIST_KEY_CFBundleDisplayName = Mhysai;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -421,7 +421,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mesai/Resources/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Mesai;
+				INFOPLIST_KEY_CFBundleDisplayName = Mhysai;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

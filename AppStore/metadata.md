@@ -3,12 +3,9 @@
 > Karakter sınırları parantez içinde. Hepsi App Store Connect → Uygulama → Sürüm sayfasına kopyalanır.
 
 ## Uygulama adı (30)
-"Mesai" tek başına büyük ihtimalle alınmış. Mağaza adı benzersiz olmalı; telefonda görünen kısa ad yine **Mesai** kalabilir. Öneriler, sırasıyla:
+**Mhysai: Maaş Sayacı** (20)
 
-1. **Mesai Sayacı: Saniyelik Maaş** (28)
-2. **Kaytarmetre: Maaş Sayacı** (24)
-3. **Saniyelik Maaş – Mesai Sayacı** (29)
-4. **Maaşmetre: Canlı Kazanç** (23)
+Telefonda görünen kısa ad: **Mhysai**. Game of Thrones göndermesi yalnızca isimde kalmalı: ikon, ekran görüntüleri ve açıklamada dizi adı, ejderha ya da alıntı kullanılmamalı (Apple 5.2 fikrî mülkiyet).
 
 ## Alt başlık (30)
 **Her saniye ne kazandığını gör** (29)
@@ -69,9 +66,11 @@ Tüm sorulara "Hayır" → **4+**. ("Sigara" yalnızca bir mola türü adı; tü
 - "Veri topluyor musunuz?" → **Hayır, bu uygulamadan veri toplamıyoruz**
 - Sonuç etiketi: **Veri Toplanmıyor**
 
-## Gizlilik politikası ve destek bağlantıları
-- Gizlilik politikası URL'si: `docs/privacy.html` bir yerde yayınlanmalı (GitHub Pages, Notion vb.)
-- Destek URL'si: `docs/support.html` aynı şekilde
+## Bağlantılar
+- Gizlilik politikası URL'si: https://gokberkcaliskan.github.io/mhysai/privacy.html
+- Destek URL'si: https://gokberkcaliskan.github.io/mhysai/support.html
+- Pazarlama URL'si (isteğe bağlı): https://gokberkcaliskan.github.io/mhysai/
+- Telif hakkı: 2026 Berat Gökberk Çalışkan
 
 ## İnceleme notları (App Review)
 Uygulama giriş ya da hesap gerektirmez. İlk açılışta maaş (ör. 60.000) ve mesai saatlerini girip "Sayacı başlat"a dokunmak yeterlidir. Sayaç yalnızca girilen mesai saatleri içinde artar; inceleme mesai dışında yapılıyorsa Ayarlar'dan mesai saatleri geniş bir aralığa (ör. 00:00–23:59) ve tüm günlere ayarlanabilir. Tutarlar gizlilik için yıldızlı başlar; sağ üstteki göz simgesiyle görünür.

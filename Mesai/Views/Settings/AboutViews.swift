@@ -4,12 +4,12 @@ struct PrivacyPolicyView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 18) {
-                block("Kısaca", "Mesai hiçbir kişisel verini toplamaz, saklamaz ya da paylaşmaz. Hesap, sunucu, reklam ve analiz aracı yoktur.")
+                block("Kısaca", "\(AppInfo.name) hiçbir kişisel verini toplamaz, saklamaz ya da paylaşmaz. Hesap, sunucu, reklam ve analiz aracı yoktur.")
                 block("Girdiğin bilgiler", "Maaşın, mesai saatlerin, kaytarma süreleri, giderlerin ve isteklerin yalnızca bu cihazda, uygulamanın kendi alanında saklanır. Uygulamayı silersen tüm veriler de silinir.")
                 block("İnternet", "Uygulama çalışmak için internete ihtiyaç duymaz ve hiçbir yere veri göndermez.")
                 block("Paylaşım", "Paylaşım kartını yalnızca sen \"Paylaş\" dediğinde, seçtiğin uygulamaya gönderilir.")
                 block("Hesaplamalar", "Maaş, vergi ve SGK hesapları bilgilendirme amaçlıdır; bordro, vergi ya da finansal danışmanlık yerine geçmez. Gerçek bordronla farklar olabilir.")
-                block("İletişim", AppInfo.supportEmail.isEmpty ? "Sorularını App Store sayfasındaki destek bağlantısından iletebilirsin." : "Sorularını \(AppInfo.supportEmail) adresine iletebilirsin.")
+                block("İletişim", "Soru ve önerilerini Ayarlar → Destek ve geri bildirim bağlantısından iletebilirsin.")
             }
             .padding()
         }
