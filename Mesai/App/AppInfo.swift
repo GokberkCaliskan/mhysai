@@ -7,7 +7,7 @@ enum AppInfo {
     static let supportURL = URL(string: "https://github.com/GokberkCaliskan/mhysai/issues")!
     static let privacyPolicyURL = URL(string: "https://gokberkcaliskan.github.io/mhysai/privacy.html")!
     /// App Store uygulama kimliği (sayısal); App Store Connect kaydından sonra doldurulur, boşken "Değerlendir" gösterilmez.
-    static let appStoreID = ""
+    static let appStoreID = "6812497140"
 
     static var version: String {
         let info = Bundle.main.infoDictionary
