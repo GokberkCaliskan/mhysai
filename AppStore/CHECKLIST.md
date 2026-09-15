@@ -13,7 +13,7 @@
 - [x] Mağaza metinleri → `AppStore/metadata.md`
 - [x] 6,9" ekran görüntüleri → `AppStore/Screenshots/`
 - [x] Gizlilik politikası ve destek sayfası → `docs/privacy.html`, `docs/support.html`
-- [x] 20 birim testi (maaş, tatil, bordro, kaytarma)
+- [x] 21 birim testi (maaş, tatil, bordro — Verginet ile birebir, kaytarma)
 
 ## 🟡 Senin yapman gerekenler (hesabınla ilgili)
 1. **Destek e-postasını belirle**

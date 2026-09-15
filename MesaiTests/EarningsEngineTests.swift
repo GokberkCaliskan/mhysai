@@ -248,4 +248,30 @@ final class EarningsEngineTests: XCTestCase {
         XCTAssertEqual(model.earnings(forMinutes: 30, on: pastDay), before, accuracy: 0.001)
         XCTAssertEqual(AppModel(defaults: defaults, calendar: calendar).earnings(forMinutes: 30, on: pastDay), before, accuracy: 0.001)
     }
+
+    /// Verginet (Deloitte) brütten nete hesaplayıcısı, 2026, aylık brüt 201.500 ₺ — "Toplam Net Ele Geçen" sütunu.
+    func testMatchesVerginet201500Gross() {
+        let expected: [Double] = [
+            148_516.39, 140_888.89, 131_984.89, 127_963.39, 127_963.39, 127_963.39,
+            128_289.81, 129_367.16, 126_049.16, 115_665.16, 115_665.16, 115_665.16,
+        ]
+        let expectedIncomeTaxBeforeExemption: [Double] = [
+            25_691.25, 33_318.75, 42_222.75, 46_244.25, 46_244.25, 46_244.25,
+            46_244.25, 46_244.25, 49_562.25, 59_946.25, 59_946.25, 59_946.25,
+        ]
+        let expectedExemption: [Double] = [
+            4_211.33, 4_211.33, 4_211.33, 4_211.33, 4_211.33, 4_211.33,
+            4_537.75, 5_615.10, 5_615.10, 5_615.10, 5_615.10, 5_615.10,
+        ]
+
+        let months = TurkishPayroll.months(monthlyGross: 201_500, parameters: .y2026)
+        for (index, month) in months.enumerated() {
+            XCTAssertEqual(month.sgk, 28_210, accuracy: 0.01)
+            XCTAssertEqual(month.unemployment, 2_015, accuracy: 0.01)
+            XCTAssertEqual(month.stampTax, 1_529.38 - 250.70, accuracy: 0.02)
+            XCTAssertEqual(month.incomeTax, expectedIncomeTaxBeforeExemption[index] - expectedExemption[index], accuracy: 0.02, "Ay \(index + 1) gelir vergisi")
+            XCTAssertEqual(month.net, expected[index], accuracy: 0.02, "Ay \(index + 1) net")
+        }
+        XCTAssertEqual(months.reduce(0) { $0 + $1.net }, 1_535_981.95, accuracy: 0.1)
+    }
 }
