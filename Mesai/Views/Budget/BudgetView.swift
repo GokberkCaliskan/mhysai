@@ -40,7 +40,7 @@ struct BudgetView: View {
     private func summary(engine: EarningsEngine) -> some View {
         let expenses = model.items(of: .expense).reduce(0) { $0 + $1.amount }
         if expenses > 0 {
-            let now = Date.now
+            let now = AppClock.now
             let monthly = engine.netSalary(forMonthOf: now)
             let share = monthly > 0 ? expenses / monthly : 0
 
@@ -88,7 +88,7 @@ struct BudgetView: View {
                 } label: {
                     BudgetRow(
                         item: item,
-                        workTime: Format.workTime(engine.workDuration(for: item.amount, at: .now), dailyPaidMinutes: daily),
+                        workTime: Format.workTime(engine.workDuration(for: item.amount, at: AppClock.now), dailyPaidMinutes: daily),
                         summary: kind == .wish ? model.shortEquivalent(for: item) : nil,
                         hidden: hidden
                     )
@@ -150,6 +150,7 @@ private struct BudgetRow: View {
         HStack(spacing: 12) {
             Text(item.emoji)
                 .font(.title2)
+                .accessibilityHidden(true)
                 .frame(width: 40, height: 40)
                 .background(Color.white.opacity(0.06), in: .circle)
 
@@ -178,6 +179,7 @@ private struct BudgetRow: View {
             }
         }
         .contentShape(.rect)
+        .accessibilityElement(children: .combine)
     }
 }
 
@@ -205,9 +207,14 @@ struct BudgetItemEditor: View {
                     TextField(item.kind == .expense ? "Örn. Kira" : "Örn. iPhone 17 Pro", text: $item.name)
                         .focused($nameFocused)
 
-                    HStack {
-                        AmountField(amount: $item.amount, placeholder: item.kind == .expense ? "25.000" : "85.000")
-                        Text("₺").foregroundStyle(.secondary)
+                    if model.amountsHidden {
+                        Label("Tutar gizli · göstermek için 👁 simgesine dokun", systemImage: "eye.slash")
+                            .foregroundStyle(.secondary)
+                    } else {
+                        HStack {
+                            AmountField(amount: $item.amount, placeholder: item.kind == .expense ? "25.000" : "85.000")
+                            Text("₺").foregroundStyle(.secondary)
+                        }
                     }
                 }
 
@@ -259,6 +266,7 @@ struct BudgetItemEditor: View {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Vazgeç") { dismiss() }
                 }
+                ToolbarItem(placement: .topBarTrailing) { PrivacyToggle() }
             }
             .safeAreaInset(edge: .bottom) {
                 Button("Kaydet") {

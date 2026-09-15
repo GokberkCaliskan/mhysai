@@ -26,10 +26,12 @@ enum Format {
         date.formatted(.dateTime.hour(.twoDigits(amPM: .omitted)).minute(.twoDigits).locale(locale))
     }
 
-    static func dayAndClock(_ date: Date, relativeTo now: Date = .now) -> String {
+    static func dayAndClock(_ date: Date, relativeTo now: Date = AppClock.now) -> String {
         let calendar = Calendar.turkish
-        if calendar.isDateInToday(date) { return "bugün \(clock(date))" }
-        if calendar.isDateInTomorrow(date) { return "yarın \(clock(date))" }
+        if calendar.isDate(date, inSameDayAs: now) { return "bugün \(clock(date))" }
+        if let tomorrow = calendar.date(byAdding: .day, value: 1, to: now), calendar.isDate(date, inSameDayAs: tomorrow) {
+            return "yarın \(clock(date))"
+        }
         let day = date.formatted(.dateTime.weekday(.wide).locale(locale))
         return "\(day) \(clock(date))"
     }
@@ -70,7 +72,7 @@ enum Format {
     }
 
     static func minutesToDate(_ minutes: Int) -> Date {
-        Calendar.turkish.date(byAdding: .minute, value: minutes, to: Calendar.turkish.startOfDay(for: .now))!
+        Calendar.turkish.date(byAdding: .minute, value: minutes, to: Calendar.turkish.startOfDay(for: AppClock.now))!
     }
 
     static func dateToMinutes(_ date: Date) -> Int {

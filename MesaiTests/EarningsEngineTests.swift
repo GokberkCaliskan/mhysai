@@ -228,4 +228,24 @@ final class EarningsEngineTests: XCTestCase {
         let profile = try JSONDecoder().decode(SalaryProfile.self, from: Data(json.utf8))
         XCTAssertEqual(profile.amountType, .net)
     }
+
+    func testPastActivityEarningsSurviveSalaryChange() {
+        let suite = "EarningsEngineTests.snapshot"
+        let defaults = UserDefaults(suiteName: suite)!
+        defaults.removePersistentDomain(forName: suite)
+        let model = AppModel(defaults: defaults, calendar: calendar)
+        var schedule = WorkSchedule.standard
+        schedule.observesPublicHolidays = false
+        model.saveProfile(SalaryProfile(amount: 60_000, period: .monthly, schedule: schedule))
+
+        // 90 günlük saklama süresinin içinde kalan geçmiş bir gün
+        let pastDay = calendar.date(byAdding: .day, value: -3, to: AppClock.now)!
+        let toilet = ActivityKind.find("toilet")
+        model.adjust(toilet, by: 30, on: pastDay)
+        let before = model.earnings(forMinutes: 30, on: pastDay)
+
+        model.saveProfile(SalaryProfile(amount: 120_000, period: .monthly, schedule: schedule))
+        XCTAssertEqual(model.earnings(forMinutes: 30, on: pastDay), before, accuracy: 0.001)
+        XCTAssertEqual(AppModel(defaults: defaults, calendar: calendar).earnings(forMinutes: 30, on: pastDay), before, accuracy: 0.001)
+    }
 }

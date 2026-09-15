@@ -10,8 +10,12 @@
 		0343380D246C79E1556B19F6 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5E1081140330B2B58EA7F /* AppModel.swift */; };
 		08F7A7475B6ACB53739148FF /* SalaryProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE1E158E4BD0F1AA959F830 /* SalaryProfile.swift */; };
 		0AE7B4D6A8D20E48EFE347EE /* ShareCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5811F40D1D749F2E15EF8B /* ShareCardView.swift */; };
+		1455A567E7EB3605D890C601 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 8475CCBCC807CC4BB34A3247 /* PrivacyInfo.xcprivacy */; };
 		258E2CFD953F5F9127C9EF88 /* ActivitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077EB3C04B022E1903C2438B /* ActivitiesView.swift */; };
 		352C7DF7464F3067D3495351 /* TurkishPayroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6230FABEAB784F09068BECC1 /* TurkishPayroll.swift */; };
+		376BBB42B9918A7B0BAFF456 /* AboutViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19939F837664569C49B57D1F /* AboutViews.swift */; };
+		3B0CFF317E44026C91198B44 /* DemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE3FC68ABDF03B13D2BD985 /* DemoData.swift */; };
+		3D08F4BE97B8D910782450C4 /* AppClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0AF875CE038AD36D81BB03 /* AppClock.swift */; };
 		3E50DAF5B254128684DB50AC /* BudgetItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC8B81DD6FA46CAC97B810 /* BudgetItem.swift */; };
 		3FD172DCD02F8AE8F813AAAE /* BudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A4E9B753D71EBFF495874A /* BudgetView.swift */; };
 		46033B49997A46C59BAADBF5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B3694AB6265C0657F2A3E /* SettingsView.swift */; };
@@ -27,6 +31,7 @@
 		A3625EE5BBD8BFFF57A52CE0 /* MesaiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3EB7E4C68C37D1CFAC642C /* MesaiApp.swift */; };
 		BFF064B64A457C37B56BEBDC /* Equivalents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A70064508BAD38A8382D32F /* Equivalents.swift */; };
 		F7F75D9FE3903F0A4FEB0BCD /* ProfileFormSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22DAE9B47C58CC85EE3AD52 /* ProfileFormSections.swift */; };
+		FDBC8DE24723D6BE0EC0EA25 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287EAFF0E36A3F459181AD04 /* AppInfo.swift */; };
 		FF7B1294E04C06425AA972B3 /* Privacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF4DB84F123348FBFA6323D /* Privacy.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,7 +48,9 @@
 /* Begin PBXFileReference section */
 		077EB3C04B022E1903C2438B /* ActivitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesView.swift; sourceTree = "<group>"; };
 		15CEEFA8F8986EDBE5F094D5 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		19939F837664569C49B57D1F /* AboutViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViews.swift; sourceTree = "<group>"; };
 		25A4E9B753D71EBFF495874A /* BudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetView.swift; sourceTree = "<group>"; };
+		287EAFF0E36A3F459181AD04 /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		369F948B5A76BE86C4B05C8F /* MesaiTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = MesaiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3EB7E4C68C37D1CFAC642C /* MesaiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesaiApp.swift; sourceTree = "<group>"; };
 		428B3694AB6265C0657F2A3E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -54,12 +61,16 @@
 		5D9242EDAC5069A1BCA4EE4F /* PayrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayrollView.swift; sourceTree = "<group>"; };
 		6230FABEAB784F09068BECC1 /* TurkishPayroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurkishPayroll.swift; sourceTree = "<group>"; };
 		6AE1E158E4BD0F1AA959F830 /* SalaryProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalaryProfile.swift; sourceTree = "<group>"; };
+		6AE3FC68ABDF03B13D2BD985 /* DemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoData.swift; sourceTree = "<group>"; };
 		725B17178BD45AD8615DA069 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		75FC8B81DD6FA46CAC97B810 /* BudgetItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItem.swift; sourceTree = "<group>"; };
 		792CD9FF3F2CED7AD98EE4B5 /* EarningsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsEngine.swift; sourceTree = "<group>"; };
+		8475CCBCC807CC4BB34A3247 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		84F5D017464B992A8AD1CDE7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		9A70064508BAD38A8382D32F /* Equivalents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equivalents.swift; sourceTree = "<group>"; };
+		A54FB103591CFBC28411C753 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D22DAE9B47C58CC85EE3AD52 /* ProfileFormSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFormSections.swift; sourceTree = "<group>"; };
+		DA0AF875CE038AD36D81BB03 /* AppClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppClock.swift; sourceTree = "<group>"; };
 		DCAA6D287C58F7FC02FF511B /* EarningsEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsEngineTests.swift; sourceTree = "<group>"; };
 		ECD6ADA8ABD4BFA3F3D1702F /* Mesai.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Mesai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C5E1081140330B2B58EA7F /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
@@ -71,6 +82,8 @@
 			isa = PBXGroup;
 			children = (
 				4B38DDBA07F9D10B9BADE3CD /* Assets.xcassets */,
+				A54FB103591CFBC28411C753 /* Info.plist */,
+				8475CCBCC807CC4BB34A3247 /* PrivacyInfo.xcprivacy */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -88,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				F1C5E1081140330B2B58EA7F /* AppModel.swift */,
+				6AE3FC68ABDF03B13D2BD985 /* DemoData.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -126,6 +140,7 @@
 		49BAC447158F36CB74F4636B /* Engine */ = {
 			isa = PBXGroup;
 			children = (
+				DA0AF875CE038AD36D81BB03 /* AppClock.swift */,
 				792CD9FF3F2CED7AD98EE4B5 /* EarningsEngine.swift */,
 				15CEEFA8F8986EDBE5F094D5 /* Formatters.swift */,
 				FA6FDE24EF18003DAEBB382E /* TurkishHolidays.swift */,
@@ -193,6 +208,7 @@
 		DF56FA23C9BC885568A79421 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				287EAFF0E36A3F459181AD04 /* AppInfo.swift */,
 				3B3EB7E4C68C37D1CFAC642C /* MesaiApp.swift */,
 			);
 			path = App;
@@ -210,6 +226,7 @@
 		FDCB506EC68CCF1E218257A9 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				19939F837664569C49B57D1F /* AboutViews.swift */,
 				5D9242EDAC5069A1BCA4EE4F /* PayrollView.swift */,
 				428B3694AB6265C0657F2A3E /* SettingsView.swift */,
 			);
@@ -298,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DDC8F5357AADF3262FDE3F0 /* Assets.xcassets in Resources */,
+				1455A567E7EB3605D890C601 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,11 +334,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				376BBB42B9918A7B0BAFF456 /* AboutViews.swift in Sources */,
 				258E2CFD953F5F9127C9EF88 /* ActivitiesView.swift in Sources */,
 				585332C899614F8A93646F89 /* Activity.swift in Sources */,
+				3D08F4BE97B8D910782450C4 /* AppClock.swift in Sources */,
+				FDBC8DE24723D6BE0EC0EA25 /* AppInfo.swift in Sources */,
 				0343380D246C79E1556B19F6 /* AppModel.swift in Sources */,
 				3E50DAF5B254128684DB50AC /* BudgetItem.swift in Sources */,
 				3FD172DCD02F8AE8F813AAAE /* BudgetView.swift in Sources */,
+				3B0CFF317E44026C91198B44 /* DemoData.swift in Sources */,
 				60C717BFB1D9E46AE21A3E44 /* EarningsEngine.swift in Sources */,
 				BFF064B64A457C37B56BEBDC /* Equivalents.swift in Sources */,
 				594154343AA5CE65684BF79F /* Formatters.swift in Sources */,
@@ -373,9 +395,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Mesai/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Mesai;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -383,6 +406,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gokberk.Mesai;
 				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -394,9 +420,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Mesai/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Mesai;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -404,6 +431,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gokberk.Mesai;
 				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -473,7 +503,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 1.0.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -538,7 +568,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 1.0.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;

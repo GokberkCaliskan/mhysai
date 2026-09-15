@@ -1,8 +1,20 @@
+import StoreKit
 import SwiftUI
 
 @main
 struct MesaiApp: App {
-    @State private var model = AppModel()
+    @State private var model: AppModel
+
+    init() {
+        #if DEBUG
+        DemoData.seedIfRequested()
+        #endif
+        let model = AppModel()
+        #if DEBUG
+        if DemoData.revealsAmounts { model.amountsHidden = false }
+        #endif
+        _model = State(initialValue: model)
+    }
 
     var body: some Scene {
         WindowGroup {
@@ -17,6 +29,7 @@ struct MesaiApp: App {
 struct RootView: View {
     @Environment(AppModel.self) private var model
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.requestReview) private var requestReview
 
     var body: some View {
         Group {
@@ -24,7 +37,17 @@ struct RootView: View {
         }
         .environment(\.hidesAmounts, model.amountsHidden)
         .onChange(of: scenePhase) { _, phase in
-            if phase == .background { model.amountsHidden = true }
+            switch phase {
+            case .background:
+                #if DEBUG
+                if DemoData.revealsAmounts { return }
+                #endif
+                model.amountsHidden = true
+            case .active:
+                if model.registerActiveDay() { requestReview() }
+            default:
+                break
+            }
         }
     }
 

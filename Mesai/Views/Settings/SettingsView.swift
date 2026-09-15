@@ -11,12 +11,23 @@ struct SettingsView: View {
                 ProfileFormSections(profile: $draft)
                     .environment(\.hidesAmounts, model.amountsHidden)
 
+                Section("Hakkında") {
+                    NavigationLink("Nasıl hesaplanıyor?") { CalculationInfoView() }
+                    NavigationLink("Gizlilik") { PrivacyPolicyView() }
+                    if let url = AppInfo.feedbackURL {
+                        Link(destination: url) { Label("Geri bildirim gönder", systemImage: "envelope") }
+                    }
+                    if let url = AppInfo.reviewURL {
+                        Link(destination: url) { Label("Uygulamayı değerlendir", systemImage: "star") }
+                    }
+                }
+
                 Section {
                     Button("Tüm verileri sıfırla", role: .destructive) {
                         confirmsReset = true
                     }
                 } footer: {
-                    Text("Mesai v0.1 · Değişiklikler otomatik kaydedilir. Tüm veriler yalnızca bu cihazda saklanır.")
+                    Text("Sürüm \(AppInfo.version) · Değişiklikler otomatik kaydedilir. Tüm veriler yalnızca bu cihazda saklanır.")
                 }
             }
             .scrollContentBackground(.hidden)

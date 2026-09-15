@@ -5,8 +5,8 @@ struct PayrollView: View {
     let profile: SalaryProfile
     @Environment(\.hidesAmounts) private var hidden
 
-    private var year: Int { Calendar.turkish.component(.year, from: .now) }
-    private var currentMonth: Int { Calendar.turkish.component(.month, from: .now) }
+    private var year: Int { Calendar.turkish.component(.year, from: AppClock.now) }
+    private var currentMonth: Int { Calendar.turkish.component(.month, from: AppClock.now) }
 
     var body: some View {
         let months = profile.payroll(year: year)

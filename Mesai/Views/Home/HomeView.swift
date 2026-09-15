@@ -10,7 +10,8 @@ struct HomeView: View {
                 if let engine = model.engine {
                     TimelineView(.periodic(from: .now, by: 0.1)) { context in
                         ScrollView {
-                            HomeContent(engine: engine, now: context.date, dailyEarnings: model.dailyEarnings(at: context.date))
+                            let now = AppClock.adjusted(context.date)
+                            HomeContent(engine: engine, now: now, dailyEarnings: model.dailyEarnings(at: now))
                                 .padding()
                         }
                     }
@@ -35,7 +36,7 @@ private struct HomeContent: View {
         let status = engine.status(at: now)
 
         VStack(spacing: 16) {
-            StatusPill(status: status)
+            StatusPill(status: status, now: now)
 
             counter(today: today, status: status)
 
@@ -67,6 +68,9 @@ private struct HomeContent: View {
                     .foregroundStyle(Theme.money.opacity(0.7))
             }
             .foregroundStyle(isWorking ? Theme.money : .primary)
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel("Bugün kazandığın")
+            .accessibilityValue(hidden ? "Gizli" : Format.lira(today, fractionDigits: 0))
             .shadow(color: isWorking ? Theme.money.opacity(0.35) : .clear, radius: 16)
 
             if let first = intervals.first, let last = intervals.last {
@@ -106,16 +110,19 @@ private struct HomeContent: View {
     }
 
     private func comparisons(today: Double) -> some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("Bugünkü kazancınla")
+        let month = engine.earnedThisMonth(at: now)
+        let usesMonth = today <= 0 && month > 0
+        let base = usesMonth ? month : today
+        return VStack(alignment: .leading, spacing: 10) {
+            Text(usesMonth ? "Bu ayki kazancınla" : "Bugünkü kazancınla")
                 .font(.subheadline.weight(.semibold))
                 .foregroundStyle(.secondary)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
                     ForEach(PriceComparison.all) { item in
                         VStack(spacing: 4) {
-                            Text(item.emoji).font(.title2)
-                            Text(hidden ? "**" : Format.number(today / item.price))
+                            Text(item.emoji).font(.title2).accessibilityHidden(true)
+                            Text(hidden ? "**" : Format.number(base / item.price, fractionDigits: base / item.price >= 100 ? 0 : 1))
                                 .font(.headline.monospacedDigit())
                             Text(item.unit)
                                 .font(.caption)
@@ -125,6 +132,7 @@ private struct HomeContent: View {
                         .padding(.vertical, 12)
                         .padding(.horizontal, 8)
                         .background(Theme.card, in: .rect(cornerRadius: 16))
+                        .accessibilityElement(children: .combine)
                     }
                 }
             }
@@ -149,6 +157,7 @@ private struct HomeContent: View {
 
 struct StatusPill: View {
     let status: WorkStatus
+    let now: Date
 
     var body: some View {
         let (icon, text, color) = describe
@@ -163,15 +172,15 @@ struct StatusPill: View {
     private var describe: (String, String, Color) {
         switch status {
         case .beforeWork(let start):
-            ("sunrise.fill", "Mesai başlangıcı \(Format.clock(start)) · \(Format.duration(start.timeIntervalSinceNow)) kaldı", .orange)
+            ("sunrise.fill", "Mesai başlangıcı \(Format.clock(start)) · \(Format.duration(start.timeIntervalSince(now))) kaldı", .orange)
         case .working(let end):
-            ("bolt.fill", "Mesaidesin · \(Format.duration(end.timeIntervalSinceNow)) kaldı", Theme.money)
+            ("bolt.fill", "Mesaidesin · \(Format.duration(end.timeIntervalSince(now))) kaldı", Theme.money)
         case .onBreak(let resume):
             ("fork.knife", "Öğle arası · dönüş \(Format.clock(resume))", .yellow)
         case .afterWork(let next):
-            ("moon.stars.fill", next.map { "Mesai bitti · sonraki \(Format.dayAndClock($0))" } ?? "Mesai bitti", .indigo)
+            ("moon.stars.fill", next.map { "Mesai bitti · sonraki \(Format.dayAndClock($0, relativeTo: now))" } ?? "Mesai bitti", .indigo)
         case .dayOff(let reason, let next):
-            ("beach.umbrella.fill", next.map { "\(reason) · sonraki mesai \(Format.dayAndClock($0))" } ?? reason, .cyan)
+            ("beach.umbrella.fill", next.map { "\(reason) · sonraki mesai \(Format.dayAndClock($0, relativeTo: now))" } ?? reason, .cyan)
         }
     }
 }
@@ -193,5 +202,6 @@ struct StatTile: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(16)
         .background(Theme.card, in: .rect(cornerRadius: 18))
+        .accessibilityElement(children: .combine)
     }
 }

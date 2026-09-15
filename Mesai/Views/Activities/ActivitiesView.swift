@@ -20,6 +20,7 @@ struct ActivitiesView: View {
                     } label: {
                         Image(systemName: "square.and.arrow.up")
                     }
+                    .accessibilityLabel("Günü paylaş")
                     .disabled(model.totalMinutes() == 0)
                 }
             }
@@ -123,6 +124,7 @@ private struct ActivityRow: View {
             Text(kind.emoji)
                 .font(.title)
                 .frame(width: 44)
+                .accessibilityHidden(true)
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(kind.name)
@@ -136,7 +138,9 @@ private struct ActivityRow: View {
             Spacer()
 
             StepButton(systemImage: "minus", isEnabled: isActive, action: onDecrement)
+                .accessibilityLabel("\(kind.name), \(ActivityKind.stepMinutes) dakika azalt")
             StepButton(systemImage: "plus", isEnabled: minutes < ActivityKind.maxMinutes, action: onIncrement)
+                .accessibilityLabel("\(kind.name), \(ActivityKind.stepMinutes) dakika ekle")
         }
         .padding(12)
         .background(isActive ? Theme.money.opacity(0.10) : Theme.card, in: .rect(cornerRadius: 18))

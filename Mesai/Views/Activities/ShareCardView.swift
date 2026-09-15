@@ -12,7 +12,7 @@ struct ShareCardView: View {
                 Text("💸 Mesai")
                     .font(.headline)
                 Spacer()
-                Text(Date.now.formatted(.dateTime.day().month(.wide).locale(Format.locale)))
+                Text(AppClock.now.formatted(.dateTime.day().month(.wide).locale(Format.locale)))
                     .font(.subheadline)
                     .foregroundStyle(.white.opacity(0.6))
             }
@@ -27,8 +27,10 @@ struct ShareCardView: View {
                 ForEach(rows, id: \.kind.id) { row in
                     HStack {
                         Text("\(row.kind.emoji)  \(row.kind.name)")
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.8)
                         Spacer()
-                        Text(Format.duration(row.duration))
+                        Text(Format.minutes(Int(row.duration / 60)))
                             .foregroundStyle(.white.opacity(0.6))
                         Text(Format.lira(row.earned))
                             .fontWeight(.semibold)

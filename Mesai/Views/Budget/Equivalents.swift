@@ -9,7 +9,7 @@ struct Equivalent: Identifiable {
 }
 
 extension AppModel {
-    func equivalents(for item: BudgetItem, at date: Date = .now) -> [Equivalent] {
+    func equivalents(for item: BudgetItem, at date: Date = AppClock.now) -> [Equivalent] {
         guard let engine, item.amount > 0 else { return [] }
         let amount = item.amount
         var result: [Equivalent] = []
@@ -53,7 +53,7 @@ extension AppModel {
 
     /// Listede gösterilecek kısa özet: "0,65 maaş · 3,4 kira"
     func shortEquivalent(for item: BudgetItem) -> String? {
-        let monthly = engine?.netSalary(forMonthOf: .now) ?? 0
+        let monthly = engine?.netSalary(forMonthOf: AppClock.now) ?? 0
         guard item.amount > 0, monthly > 0 else { return nil }
         var parts = ["\(Format.number(item.amount / monthly, fractionDigits: 2)) maaş"]
         if let firstExpense = items(of: .expense).first(where: { $0.amount > 0 }) {

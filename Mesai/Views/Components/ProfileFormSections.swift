@@ -84,7 +84,7 @@ struct ProfileFormSections: View {
 
     private var grossSummary: some View {
         let calendar = Calendar.turkish
-        let c = calendar.dateComponents([.year, .month], from: .now)
+        let c = calendar.dateComponents([.year, .month], from: AppClock.now)
         let months = profile.payroll(year: c.year ?? 2026)
         let current = months.first { $0.month == c.month }
         return VStack(alignment: .leading, spacing: 4) {
@@ -189,6 +189,8 @@ struct WeekdayPicker: View {
                         .foregroundStyle(isOn ? .black : .secondary)
                 }
                 .buttonStyle(.plain)
+                .accessibilityLabel(Calendar.turkish.weekdaySymbols[day.weekday - 1])
+                .accessibilityAddTraits(isOn ? .isSelected : [])
                 .sensoryFeedback(.selection, trigger: isOn)
             }
         }
