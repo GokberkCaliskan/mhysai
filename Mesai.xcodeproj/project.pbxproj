@@ -1,0 +1,586 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0343380D246C79E1556B19F6 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5E1081140330B2B58EA7F /* AppModel.swift */; };
+		08F7A7475B6ACB53739148FF /* SalaryProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE1E158E4BD0F1AA959F830 /* SalaryProfile.swift */; };
+		0AE7B4D6A8D20E48EFE347EE /* ShareCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5811F40D1D749F2E15EF8B /* ShareCardView.swift */; };
+		258E2CFD953F5F9127C9EF88 /* ActivitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077EB3C04B022E1903C2438B /* ActivitiesView.swift */; };
+		352C7DF7464F3067D3495351 /* TurkishPayroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6230FABEAB784F09068BECC1 /* TurkishPayroll.swift */; };
+		3E50DAF5B254128684DB50AC /* BudgetItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC8B81DD6FA46CAC97B810 /* BudgetItem.swift */; };
+		3FD172DCD02F8AE8F813AAAE /* BudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A4E9B753D71EBFF495874A /* BudgetView.swift */; };
+		46033B49997A46C59BAADBF5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B3694AB6265C0657F2A3E /* SettingsView.swift */; };
+		532A32BEA4EAD08060E8FF26 /* EarningsEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAA6D287C58F7FC02FF511B /* EarningsEngineTests.swift */; };
+		585332C899614F8A93646F89 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4FF3DEFE0EAA187BE76380 /* Activity.swift */; };
+		594154343AA5CE65684BF79F /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CEEFA8F8986EDBE5F094D5 /* Formatters.swift */; };
+		60C717BFB1D9E46AE21A3E44 /* EarningsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792CD9FF3F2CED7AD98EE4B5 /* EarningsEngine.swift */; };
+		7DEF2957A3EA30099FF51912 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D017464B992A8AD1CDE7 /* HomeView.swift */; };
+		804FC283753B68E51425A53C /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B17178BD45AD8615DA069 /* OnboardingView.swift */; };
+		88E8D735C2F750E40DE18EE9 /* PayrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9242EDAC5069A1BCA4EE4F /* PayrollView.swift */; };
+		8DDC8F5357AADF3262FDE3F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B38DDBA07F9D10B9BADE3CD /* Assets.xcassets */; };
+		98025601CAB9A037ADFE0D4A /* TurkishHolidays.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FDE24EF18003DAEBB382E /* TurkishHolidays.swift */; };
+		A3625EE5BBD8BFFF57A52CE0 /* MesaiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3EB7E4C68C37D1CFAC642C /* MesaiApp.swift */; };
+		BFF064B64A457C37B56BEBDC /* Equivalents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A70064508BAD38A8382D32F /* Equivalents.swift */; };
+		F7F75D9FE3903F0A4FEB0BCD /* ProfileFormSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22DAE9B47C58CC85EE3AD52 /* ProfileFormSections.swift */; };
+		FF7B1294E04C06425AA972B3 /* Privacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF4DB84F123348FBFA6323D /* Privacy.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		18700D454328325D12F56E91 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 60D148D0A7110B69C7096505 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6D8F9B8664189041B244A1B3;
+			remoteInfo = Mesai;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		077EB3C04B022E1903C2438B /* ActivitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesView.swift; sourceTree = "<group>"; };
+		15CEEFA8F8986EDBE5F094D5 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		25A4E9B753D71EBFF495874A /* BudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetView.swift; sourceTree = "<group>"; };
+		369F948B5A76BE86C4B05C8F /* MesaiTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = MesaiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B3EB7E4C68C37D1CFAC642C /* MesaiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesaiApp.swift; sourceTree = "<group>"; };
+		428B3694AB6265C0657F2A3E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		4B38DDBA07F9D10B9BADE3CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4EF4DB84F123348FBFA6323D /* Privacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Privacy.swift; sourceTree = "<group>"; };
+		5C4FF3DEFE0EAA187BE76380 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		5D5811F40D1D749F2E15EF8B /* ShareCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCardView.swift; sourceTree = "<group>"; };
+		5D9242EDAC5069A1BCA4EE4F /* PayrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayrollView.swift; sourceTree = "<group>"; };
+		6230FABEAB784F09068BECC1 /* TurkishPayroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurkishPayroll.swift; sourceTree = "<group>"; };
+		6AE1E158E4BD0F1AA959F830 /* SalaryProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalaryProfile.swift; sourceTree = "<group>"; };
+		725B17178BD45AD8615DA069 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		75FC8B81DD6FA46CAC97B810 /* BudgetItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetItem.swift; sourceTree = "<group>"; };
+		792CD9FF3F2CED7AD98EE4B5 /* EarningsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsEngine.swift; sourceTree = "<group>"; };
+		84F5D017464B992A8AD1CDE7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		9A70064508BAD38A8382D32F /* Equivalents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equivalents.swift; sourceTree = "<group>"; };
+		D22DAE9B47C58CC85EE3AD52 /* ProfileFormSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFormSections.swift; sourceTree = "<group>"; };
+		DCAA6D287C58F7FC02FF511B /* EarningsEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsEngineTests.swift; sourceTree = "<group>"; };
+		ECD6ADA8ABD4BFA3F3D1702F /* Mesai.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Mesai.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1C5E1081140330B2B58EA7F /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		FA6FDE24EF18003DAEBB382E /* TurkishHolidays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurkishHolidays.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		1957C9FD80BA531FBC5027F5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4B38DDBA07F9D10B9BADE3CD /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		203977E294BBE0B72F282BAB /* Activities */ = {
+			isa = PBXGroup;
+			children = (
+				077EB3C04B022E1903C2438B /* ActivitiesView.swift */,
+				5D5811F40D1D749F2E15EF8B /* ShareCardView.swift */,
+			);
+			path = Activities;
+			sourceTree = "<group>";
+		};
+		2270D2EE9315B5C9EE95CC6D /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				F1C5E1081140330B2B58EA7F /* AppModel.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		24F815AB999542DBC43E9EE6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5C4FF3DEFE0EAA187BE76380 /* Activity.swift */,
+				75FC8B81DD6FA46CAC97B810 /* BudgetItem.swift */,
+				6AE1E158E4BD0F1AA959F830 /* SalaryProfile.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4170437FB457E7A5CB725818 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				725B17178BD45AD8615DA069 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		492EBBADCA32D18C653CCF3C /* Mesai */ = {
+			isa = PBXGroup;
+			children = (
+				DF56FA23C9BC885568A79421 /* App */,
+				49BAC447158F36CB74F4636B /* Engine */,
+				24F815AB999542DBC43E9EE6 /* Models */,
+				1957C9FD80BA531FBC5027F5 /* Resources */,
+				2270D2EE9315B5C9EE95CC6D /* Store */,
+				AB8D0E87D4C19318FDA9E892 /* Views */,
+			);
+			path = Mesai;
+			sourceTree = "<group>";
+		};
+		49BAC447158F36CB74F4636B /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				792CD9FF3F2CED7AD98EE4B5 /* EarningsEngine.swift */,
+				15CEEFA8F8986EDBE5F094D5 /* Formatters.swift */,
+				FA6FDE24EF18003DAEBB382E /* TurkishHolidays.swift */,
+				6230FABEAB784F09068BECC1 /* TurkishPayroll.swift */,
+			);
+			path = Engine;
+			sourceTree = "<group>";
+		};
+		4A00986CD953EBF7F5863699 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ECD6ADA8ABD4BFA3F3D1702F /* Mesai.app */,
+				369F948B5A76BE86C4B05C8F /* MesaiTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4D8494112054CB1B1DDB3611 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				84F5D017464B992A8AD1CDE7 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		7F66359C8967B846AB9E871C = {
+			isa = PBXGroup;
+			children = (
+				492EBBADCA32D18C653CCF3C /* Mesai */,
+				A62EE145EAE18CA53761EF28 /* MesaiTests */,
+				4A00986CD953EBF7F5863699 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A62EE145EAE18CA53761EF28 /* MesaiTests */ = {
+			isa = PBXGroup;
+			children = (
+				DCAA6D287C58F7FC02FF511B /* EarningsEngineTests.swift */,
+			);
+			path = MesaiTests;
+			sourceTree = "<group>";
+		};
+		AB8D0E87D4C19318FDA9E892 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				203977E294BBE0B72F282BAB /* Activities */,
+				E0D548436676FFDAB44CA290 /* Budget */,
+				B9E5CC3AE29A5E1A51341BAA /* Components */,
+				4D8494112054CB1B1DDB3611 /* Home */,
+				4170437FB457E7A5CB725818 /* Onboarding */,
+				FDCB506EC68CCF1E218257A9 /* Settings */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B9E5CC3AE29A5E1A51341BAA /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				4EF4DB84F123348FBFA6323D /* Privacy.swift */,
+				D22DAE9B47C58CC85EE3AD52 /* ProfileFormSections.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		DF56FA23C9BC885568A79421 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3B3EB7E4C68C37D1CFAC642C /* MesaiApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		E0D548436676FFDAB44CA290 /* Budget */ = {
+			isa = PBXGroup;
+			children = (
+				25A4E9B753D71EBFF495874A /* BudgetView.swift */,
+				9A70064508BAD38A8382D32F /* Equivalents.swift */,
+			);
+			path = Budget;
+			sourceTree = "<group>";
+		};
+		FDCB506EC68CCF1E218257A9 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				5D9242EDAC5069A1BCA4EE4F /* PayrollView.swift */,
+				428B3694AB6265C0657F2A3E /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5E2CA9CF3A00F3D6F5C0E785 /* MesaiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1813A816F6805715B733BE77 /* Build configuration list for PBXNativeTarget "MesaiTests" */;
+			buildPhases = (
+				5B285E64580554FDCA866EFC /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				73D9CCC44AAD9A9F5D71C82A /* PBXTargetDependency */,
+			);
+			name = MesaiTests;
+			packageProductDependencies = (
+			);
+			productName = MesaiTests;
+			productReference = 369F948B5A76BE86C4B05C8F /* MesaiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6D8F9B8664189041B244A1B3 /* Mesai */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7621EC012114F1F4685C4CC0 /* Build configuration list for PBXNativeTarget "Mesai" */;
+			buildPhases = (
+				D885AE5A9706E7D21F0DEFD0 /* Sources */,
+				541FA9C989026A097C4C1C6E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Mesai;
+			packageProductDependencies = (
+			);
+			productName = Mesai;
+			productReference = ECD6ADA8ABD4BFA3F3D1702F /* Mesai.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		60D148D0A7110B69C7096505 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					5E2CA9CF3A00F3D6F5C0E785 = {
+						DevelopmentTeam = 85TTHXUH56;
+					};
+					6D8F9B8664189041B244A1B3 = {
+						DevelopmentTeam = 85TTHXUH56;
+					};
+				};
+			};
+			buildConfigurationList = CA42D2765BD94B40CBEBA848 /* Build configuration list for PBXProject "Mesai" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = tr;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				tr,
+			);
+			mainGroup = 7F66359C8967B846AB9E871C;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6D8F9B8664189041B244A1B3 /* Mesai */,
+				5E2CA9CF3A00F3D6F5C0E785 /* MesaiTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		541FA9C989026A097C4C1C6E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DDC8F5357AADF3262FDE3F0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5B285E64580554FDCA866EFC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				532A32BEA4EAD08060E8FF26 /* EarningsEngineTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D885AE5A9706E7D21F0DEFD0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				258E2CFD953F5F9127C9EF88 /* ActivitiesView.swift in Sources */,
+				585332C899614F8A93646F89 /* Activity.swift in Sources */,
+				0343380D246C79E1556B19F6 /* AppModel.swift in Sources */,
+				3E50DAF5B254128684DB50AC /* BudgetItem.swift in Sources */,
+				3FD172DCD02F8AE8F813AAAE /* BudgetView.swift in Sources */,
+				60C717BFB1D9E46AE21A3E44 /* EarningsEngine.swift in Sources */,
+				BFF064B64A457C37B56BEBDC /* Equivalents.swift in Sources */,
+				594154343AA5CE65684BF79F /* Formatters.swift in Sources */,
+				7DEF2957A3EA30099FF51912 /* HomeView.swift in Sources */,
+				A3625EE5BBD8BFFF57A52CE0 /* MesaiApp.swift in Sources */,
+				804FC283753B68E51425A53C /* OnboardingView.swift in Sources */,
+				88E8D735C2F750E40DE18EE9 /* PayrollView.swift in Sources */,
+				FF7B1294E04C06425AA972B3 /* Privacy.swift in Sources */,
+				F7F75D9FE3903F0A4FEB0BCD /* ProfileFormSections.swift in Sources */,
+				08F7A7475B6ACB53739148FF /* SalaryProfile.swift in Sources */,
+				46033B49997A46C59BAADBF5 /* SettingsView.swift in Sources */,
+				0AE7B4D6A8D20E48EFE347EE /* ShareCardView.swift in Sources */,
+				98025601CAB9A037ADFE0D4A /* TurkishHolidays.swift in Sources */,
+				352C7DF7464F3067D3495351 /* TurkishPayroll.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		73D9CCC44AAD9A9F5D71C82A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6D8F9B8664189041B244A1B3 /* Mesai */;
+			targetProxy = 18700D454328325D12F56E91 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		15F76FE91C26AB38F1EC0F81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gokberk.MesaiTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mesai.app/Mesai";
+			};
+			name = Release;
+		};
+		79CD9D045532FF45C77680AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Mesai;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gokberk.Mesai;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		99D28B6D8AC1B0ABB4F90B8E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Mesai;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gokberk.Mesai;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		C2DF0B3D0319A8F8EFF9A4A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gokberk.MesaiTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mesai.app/Mesai";
+			};
+			name = Debug;
+		};
+		D610C2DB99A0942F58203DE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 85TTHXUH56;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		FF9751C01789E32765FBB21B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 85TTHXUH56;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1813A816F6805715B733BE77 /* Build configuration list for PBXNativeTarget "MesaiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2DF0B3D0319A8F8EFF9A4A9 /* Debug */,
+				15F76FE91C26AB38F1EC0F81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		7621EC012114F1F4685C4CC0 /* Build configuration list for PBXNativeTarget "Mesai" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79CD9D045532FF45C77680AB /* Debug */,
+				99D28B6D8AC1B0ABB4F90B8E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		CA42D2765BD94B40CBEBA848 /* Build configuration list for PBXProject "Mesai" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF9751C01789E32765FBB21B /* Debug */,
+				D610C2DB99A0942F58203DE8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 60D148D0A7110B69C7096505 /* Project object */;
+}
