@@ -17,7 +17,7 @@ targets:
     sources: [Mesai]
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.gokberk.mhysai
+        PRODUCT_BUNDLE_IDENTIFIER: com.gokberk.Mesai
         PRODUCT_NAME: Mhysai
         PRODUCT_MODULE_NAME: Mesai
         INFOPLIST_KEY_CFBundleDisplayName: "Mhysai"
@@ -40,7 +40,7 @@ targets:
       - target: Mesai
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.gokberk.mhysaiTests
+        PRODUCT_BUNDLE_IDENTIFIER: com.gokberk.MesaiTests
         TEST_HOST: $(BUILT_PRODUCTS_DIR)/Mhysai.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mhysai
         BUNDLE_LOADER: $(TEST_HOST)
         GENERATE_INFOPLIST_FILE: YES

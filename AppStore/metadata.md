@@ -79,9 +79,11 @@ Uygulama giriş ya da hesap gerektirmez. İlk açılışta maaş (ör. 60.000) v
 v1 için **Ücretsiz** önerilir. İleride tek seferlik "Pro" (widget, kilit ekranı sayacı, özel kaytarma türleri) eklenebilir.
 
 ## Ekran görüntüleri
-`AppStore/Screenshots/` — 6,9" (1320×2868), iPhone 17 Pro Max simülatöründen:
-1. `01-sayac.png` — Canlı sayaç
-2. `02-kaytarma.png` — Kaytarma sayacı
-3. `03-kac-mesai.png` — Giderler ve istek listesi
-4. `04-neye-denk.png` — iPhone kaç mesai ediyor
-5. `05-paylas.png` — Paylaşım kartı
+App Store Connect → iPhone **6.5" Display** alanına: `AppStore/Screenshots/6.5/` klasöründeki 5 JPG (1284×2778)
+1. `01-sayac.jpg` — Canlı sayaç
+2. `02-kaytarma.jpg` — Kaytarma sayacı
+3. `03-kac-mesai.jpg` — Giderler ve istek listesi
+4. `04-neye-denk.jpg` — iPhone kaç mesai ediyor
+5. `05-paylas.jpg` — Paylaşım kartı
+
+(Aynı görsellerin 6,9" / 1320×2868 PNG hâlleri `AppStore/Screenshots/` altında.)
