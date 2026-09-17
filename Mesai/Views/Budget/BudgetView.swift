@@ -207,14 +207,10 @@ struct BudgetItemEditor: View {
                     TextField(item.kind == .expense ? "Örn. Kira" : "Örn. iPhone 17 Pro", text: $item.name)
                         .focused($nameFocused)
 
-                    if model.amountsHidden {
-                        Label("Tutar gizli · göstermek için 👁 simgesine dokun", systemImage: "eye.slash")
-                            .foregroundStyle(.secondary)
-                    } else {
-                        HStack {
-                            AmountField(amount: $item.amount, placeholder: item.kind == .expense ? "25.000" : "85.000")
-                            Text("₺").foregroundStyle(.secondary)
-                        }
+                    // Düzenleme ekranında tutar her zaman girilebilir olmalı; listede gizli kalır.
+                    HStack {
+                        AmountField(amount: $item.amount, placeholder: item.kind == .expense ? "25.000" : "85.000")
+                        Text("₺").foregroundStyle(.secondary)
                     }
                 }
 
