@@ -37,8 +37,11 @@ struct OnboardingView: View {
             }
             .navigationDestination(isPresented: $showsForm) {
                 Form {
+                    // Kurulumda gizlilik modu olamaz: kullanıcı maaşını girebilmeli.
                     ProfileFormSections(profile: $draft)
+                        .environment(\.hidesAmounts, false)
                 }
+                .scrollDismissesKeyboard(.interactively)
                 .scrollContentBackground(.hidden)
                 .background(Theme.background)
                 .navigationTitle("Maaş ve mesai")

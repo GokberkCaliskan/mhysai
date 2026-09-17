@@ -8,7 +8,7 @@ Aşağıdaki İngilizce metnin tamamını:
 
 Hello App Review Team,
 
-Thank you for reviewing Mhysai. Please find the requested information below. A screen recording captured on a physical iPhone running the latest iOS is attached.
+Thank you for reviewing Mhysai. We found and fixed an issue where the salary field could be hidden on the first-launch setup screen; please review build 1.0.0 (2). Please find the requested information below. A screen recording captured on a physical iPhone running the latest iOS is attached.
 
 **1. Screen recording**
 The attached recording starts with launching the app and shows the complete user flow: onboarding (entering a monthly salary and working hours), the live earnings counter, the privacy (hide amounts) toggle, the "Kaytarma" break tracker, the "Kaç Mesai?" expenses/wish list screen, the gross-to-net monthly breakdown in Settings, and sharing a daily summary card.
