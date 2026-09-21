@@ -16,6 +16,7 @@ struct NotificationPreferences: Codable, Equatable {
 enum NotificationScheduler {
     static let scheduledDays = 14
 
+    /// Her gün sırayla bir tanesi gönderilir.
     static let jokes = [
         "Mesai bitmeden tuvalete gitmenin tam sırası 🚽 Şirket saatinde, şirketin parasına.",
         "Çay molası zamanı ☕️ Bardağı doldur, sayaç senin için çalışmaya devam etsin.",
@@ -27,6 +28,41 @@ enum NotificationScheduler {
         "Son viraj: e-postaya 'ilgileniyorum, dönüş yapacağım' yaz, kapat 📧",
         "Buzdolabına gitme vakti 🧊 Yolun her adımı ücretli.",
         "Şirket telefonuyla kişisel işini halletme saati geldi 📱",
+        "Excel'de rastgele hücrelere tıkla, kimse anlamaz 📊 Para işliyor.",
+        "Toplantı 15 dakika uzadı mı? Tebrikler, zam gibi bir şey 💸",
+        "'Bir bakayım' deyip 40 dakika kaybolmanın tam zamanı 🕵️",
+        "Printer'a gidip hiçbir şey yazdırmadan dönmek: klasik ama etkili 🖨️",
+        "Karşı masaya 'sistem yavaş mı sende de?' diye sor, 10 dakika gitti 🐌",
+        "Pencereden dışarı bak, düşün, iç geçir. Hepsi mesaiden sayılıyor 🌇",
+        "Klimayı ayarlamak için kalk. Şirketin ısısı, şirketin dakikası ❄️",
+        "Bugün en az bir kere 'bunu bir araştırayım' de. Araştırma uzun sürer 🔍",
+        "Mesai bitiyor ama sayaç hâlâ senin tarafında ⏳",
+        "Su içmeye git 💧 Sağlığına iyi gelir, cüzdanına da.",
+        "Bilgisayarı yeniden başlat, 'güncelleme geldi' de 🔄 Kimse sorgulamaz.",
+        "Mailleri okumuş gibi yapıp yıldız koymak da iştir ⭐️",
+        "Asansörü bekle, merdiven kullanma. Acelen ne? 🛗",
+        "Telefonla koridorda dolaş, ciddi görünürsün 📞 Dakika dakika kazanç.",
+        "Kalem arıyormuş gibi üç masa dolaş ✏️ Turnuva usulü kaytarma.",
+        "Toplantı öncesi 'bağlantım koptu galiba' demek için mükemmel an 🔌",
+        "Bugün mesainin en güzel yanı: bitiyor olması 🎉",
+        "'Dosyayı açıyorum' de, açılmasını bekle, biraz daha bekle 📂",
+        "Sandalyeyi ayarla, oturuşunu düzelt, tekrar ayarla 🪑 Ergonomi önemli.",
+        "Cam kenarına git, hava durumuna bak. Yağmur da para getiriyor 🌧️",
+        "Klasör isimlerini düzenlemek: görünüşte iş, gerçekte mola 🗂️",
+        "Yemekten sonra ilk yarım saat zaten kimseden verim beklenmez 🍽️",
+        "Bir kahve daha? Kafein senden, zaman şirketten ☕️☕️",
+        "Masanı topla. Temizlik yaparken de sayaç dönüyor 🧹",
+        "Grup sohbetine bir emoji at, iş birliği yapmış sayılırsın 😄",
+        "Mesai bitimine az kaldı: şimdi ağır ağır toparlanma sanatı 🎒",
+        "Bugün kazandığın parayı düşün, sonra kaç saat çalıştığını unut 😌",
+        "'Yarın sabah ilk iş bu' cümlesi bugünü kurtarır 🌅",
+        "Sıcak su sebilinin başında felsefe yapmanın dakikası ücretli 🫖",
+        "Şu an bu bildirimi okurken bile kazanıyorsun 💚",
+        "Kısa bir esneme molası 🧘 Bel sağlığı, mesai kârı.",
+        "Arkadaşına bu uygulamayı göster, o da kazandığını görsün 📲",
+        "Bugün işe geldin, bu bile başarı 🏆 Gerisi detay.",
+        "Not defterine anlamsız bir şeyler çiz ✍️ Yaratıcılık molası diyelim.",
+        "Son 20 dakika: ekranı kilitleme, sadece bak 👨‍💻 Klasikleşmiş taktik.",
     ]
 
     static func requestAuthorization() async -> Bool {
@@ -70,7 +106,7 @@ enum NotificationScheduler {
             if preferences.jokes,
                let fire = calendar.date(byAdding: .minute, value: -(preferences.countdownMinutes + 25), to: end),
                fire > now {
-                let index = abs(calendar.component(.day, from: day) &+ calendar.component(.month, from: day) &* 31) % jokes.count
+                let index = jokeIndex(for: day, calendar: calendar)
                 planned.append(PlannedNotification(
                     id: "joke-\(offset)",
                     date: fire,
@@ -90,6 +126,14 @@ enum NotificationScheduler {
             }
         }
         return planned
+    }
+
+    /// Günleri sabit bir başlangıçtan sayarak her gün sıradaki espriyi seçer.
+    static func jokeIndex(for day: Date, calendar: Calendar) -> Int {
+        let epoch = calendar.date(from: DateComponents(year: 2026, month: 1, day: 1)) ?? Date(timeIntervalSince1970: 0)
+        let days = calendar.dateComponents([.day], from: calendar.startOfDay(for: epoch), to: calendar.startOfDay(for: day)).day ?? 0
+        let count = jokes.count
+        return ((days % count) + count) % count
     }
 
     @MainActor

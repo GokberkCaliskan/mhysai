@@ -172,3 +172,19 @@ extension PortfolioAndNotificationTests {
         )
     }
 }
+
+extension PortfolioAndNotificationTests {
+    func testJokeRotatesEveryDayWithoutRepeating() {
+        var day = date(2026, 9, 21)
+        var seen: [Int] = []
+        for _ in 0..<NotificationScheduler.jokes.count {
+            seen.append(NotificationScheduler.jokeIndex(for: day, calendar: calendar))
+            day = calendar.date(byAdding: .day, value: 1, to: day)!
+        }
+        // Espri sayısı kadar gün boyunca hiçbiri tekrar etmemeli
+        XCTAssertEqual(Set(seen).count, NotificationScheduler.jokes.count)
+        // Ertesi gün başa döner
+        XCTAssertEqual(NotificationScheduler.jokeIndex(for: day, calendar: calendar), seen[0])
+        XCTAssertTrue(NotificationScheduler.jokes.allSatisfy { !$0.isEmpty && $0.count < 180 })
+    }
+}
