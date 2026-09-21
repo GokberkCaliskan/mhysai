@@ -191,7 +191,11 @@ struct HoldingEditor: View {
     @State private var query = ""
     @State private var results: [SymbolResult] = []
     @State private var isSearching = false
+    @State private var isChangingSymbol = false
     @State private var searchService = SymbolSearchService()
+    @FocusState private var focus: Field?
+
+    private enum Field { case search, quantity }
 
     init(holding: Holding) {
         _holding = State(initialValue: holding)
@@ -202,49 +206,67 @@ struct HoldingEditor: View {
 
     @ViewBuilder
     private var stockSearchSection: some View {
-        HStack {
-            Image(systemName: "magnifyingglass").foregroundStyle(.secondary)
-            TextField("Şirket adı ya da sembol ara", text: $query)
-                .autocorrectionDisabled()
-                .textInputAutocapitalization(.never)
-                .submitLabel(.search)
-            if isSearching { ProgressView().controlSize(.small) }
-            else if !query.isEmpty {
-                Button { query = ""; results = [] } label: { Image(systemName: "xmark.circle.fill") }
-                    .buttonStyle(.plain)
-                    .foregroundStyle(.secondary)
-                    .accessibilityLabel("Aramayı temizle")
-            }
-        }
-
-        if !holding.symbol.isEmpty, results.isEmpty {
-            Label("\(holding.symbol.uppercased()) · \(holding.title.isEmpty ? "seçildi" : holding.title)", systemImage: "checkmark.circle.fill")
-                .foregroundStyle(Theme.money)
-                .font(.subheadline)
-        }
-
-        ForEach(results.isEmpty && query.isEmpty ? Holding.popularStocks : results) { result in
-            Button {
-                holding.symbol = result.symbol
-                holding.title = result.name
-                query = ""
-                results = []
-            } label: {
-                HStack {
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text(result.name).font(.subheadline.weight(.medium)).lineLimit(1)
-                        Text(result.symbol).font(.caption.monospaced()).foregroundStyle(.secondary)
-                    }
-                    Spacer()
-                    Text(result.exchange).font(.caption2).foregroundStyle(.secondary)
-                    if holding.symbol.uppercased() == result.symbol.uppercased() {
-                        Image(systemName: "checkmark").foregroundStyle(Theme.money)
-                    }
+        if let selected = selectedSymbol, !isChangingSymbol {
+            HStack(spacing: 10) {
+                Image(systemName: "checkmark.circle.fill").foregroundStyle(Theme.money)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(holding.title.isEmpty ? selected : holding.title)
+                        .font(.subheadline.weight(.medium))
+                        .lineLimit(1)
+                    Text(selected).font(.caption.monospaced()).foregroundStyle(.secondary)
                 }
-                .contentShape(.rect)
+                Spacer()
+                Button("Değiştir") {
+                    isChangingSymbol = true
+                    query = ""
+                    results = []
+                }
+                .font(.subheadline)
             }
-            .foregroundStyle(.primary)
+        } else {
+            HStack {
+                Image(systemName: "magnifyingglass").foregroundStyle(.secondary)
+                TextField("Şirket adı ya da sembol ara", text: $query)
+                    .autocorrectionDisabled()
+                    .textInputAutocapitalization(.never)
+                    .submitLabel(.search)
+                    .focused($focus, equals: .search)
+                if isSearching { ProgressView().controlSize(.small) }
+                else if !query.isEmpty {
+                    Button { query = ""; results = [] } label: { Image(systemName: "xmark.circle.fill") }
+                        .buttonStyle(.plain)
+                        .foregroundStyle(.secondary)
+                        .accessibilityLabel("Aramayı temizle")
+                }
+            }
+
+            ForEach(results.isEmpty && query.isEmpty ? Holding.popularStocks : results) { result in
+                Button {
+                    holding.symbol = result.symbol
+                    holding.title = result.name
+                    query = ""
+                    results = []
+                    isChangingSymbol = false
+                    focus = .quantity
+                } label: {
+                    HStack {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(result.name).font(.subheadline.weight(.medium)).lineLimit(1)
+                            Text(result.symbol).font(.caption.monospaced()).foregroundStyle(.secondary)
+                        }
+                        Spacer()
+                        Text(result.exchange).font(.caption2).foregroundStyle(.secondary)
+                    }
+                    .contentShape(.rect)
+                }
+                .foregroundStyle(.primary)
+            }
         }
+    }
+
+    private var selectedSymbol: String? {
+        let trimmed = holding.symbol.trimmingCharacters(in: .whitespaces)
+        return trimmed.isEmpty ? nil : trimmed.uppercased()
     }
 
     var body: some View {
@@ -256,14 +278,11 @@ struct HoldingEditor: View {
                     }
                     .pickerStyle(.segmented)
 
-                    if holding.kind == .stock {
-                        stockSearchSection
-                    }
-
                     HStack {
                         TextField(holding.kind == .gold ? "Kaç gram?" : "Miktar", text: $quantityText)
                             .keyboardType(.decimalPad)
                             .font(.title3.weight(.semibold).monospacedDigit())
+                            .focused($focus, equals: .quantity)
                             .onChange(of: quantityText) { _, new in
                                 holding.quantity = Double(new.replacingOccurrences(of: ",", with: ".")) ?? 0
                             }
@@ -271,8 +290,18 @@ struct HoldingEditor: View {
                     }
                 } footer: {
                     Text(holding.kind == .stock
-                         ? "Şirket adını ya da sembolü ara: \"nvidia\", \"aselsan\", \"bitcoin\". ABD hisseleri dolardan, BIST hisseleri TL'den hesaplanır."
+                         ? "Kaç adet elinde? Fiyat borsadan alınır, TL karşılığı hesaplanır."
                          : "Kaç adet/gram olduğunu yaz; güncel fiyatıyla TL karşılığını hesaplarız.")
+                }
+
+                if holding.kind == .stock {
+                    Section {
+                        stockSearchSection
+                    } header: {
+                        Text("Hisse / fon")
+                    } footer: {
+                        Text("Şirket adını ya da sembolü ara: \"nvidia\", \"aselsan\", \"bitcoin\". ABD hisseleri dolardan, BIST hisseleri TL'den hesaplanır.")
+                    }
                 }
 
                 if !isNew {
@@ -288,6 +317,17 @@ struct HoldingEditor: View {
             .scrollDismissesKeyboard(.interactively)
             .background(Theme.background)
             .navigationTitle(isNew ? "Varlık ekle" : "Düzenle")
+            .onAppear {
+                if holding.kind == .stock, selectedSymbol == nil {
+                    isChangingSymbol = true
+                    focus = .search
+                } else {
+                    focus = .quantity
+                }
+            }
+            .onChange(of: holding.kind) { _, kind in
+                if kind == .stock, selectedSymbol == nil { isChangingSymbol = true }
+            }
             .task(id: query) {
                 let text = query
                 guard text.trimmingCharacters(in: .whitespaces).count >= 2 else {

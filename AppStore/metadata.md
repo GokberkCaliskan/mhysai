@@ -12,8 +12,7 @@ Telefonda görünen kısa ad: **Mhysai**. Game of Thrones göndermesi yalnızca 
 
 ## Tanıtım metni (170)
 Maaşın sabah mesaiyle birlikte saniye saniye akıyor. Tuvalette, çay molasında, boş toplantıda ne kadar kazandığını gör; istediğin iPhone'un kaç mesai ettiğini öğren.
-
-## Açıklama (4000)
+## Açıklama (4000)æ
 Mesaide geçen her saniyenin kaç lira ettiğini hiç merak ettin mi?
 
 Maaşını ve mesai saatlerini gir; sayaç sabah mesaiyle başlasın, akşam mesai bitince dursun. Günün her anında bugün, bu ay ve bu yıl ne kadar kazandığını canlı olarak gör.

@@ -46,6 +46,7 @@ struct RootView: View {
             case .active:
                 if model.registerActiveDay() { requestReview() }
                 Task { await model.rescheduleNotifications() }
+                Task { await model.refreshQuotesIfNeeded() }
             default:
                 break
             }
