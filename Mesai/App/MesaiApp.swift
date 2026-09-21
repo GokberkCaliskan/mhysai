@@ -42,7 +42,7 @@ struct RootView: View {
                 #if DEBUG
                 if DemoData.revealsAmounts { return }
                 #endif
-                model.amountsHidden = true
+                if model.hidesAmountsOnLaunch { model.amountsHidden = true }
             case .active:
                 if model.registerActiveDay() { requestReview() }
                 Task { await model.rescheduleNotifications() }

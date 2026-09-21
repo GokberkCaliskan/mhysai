@@ -14,11 +14,15 @@ final class AppModel {
     private(set) var quotesUpdatedAt: Date?
     private(set) var quoteFailure: QuoteFailure?
     private(set) var isRefreshingQuotes = false
-    private(set) var notificationPreferences: NotificationPreferences
+    /// Not: @Observable sınıflarda didSet çalışmaz; `persistNotificationPreferences()` ile kaydedilir.
+    var notificationPreferences: NotificationPreferences
     /// Gün anahtarı → o gün geçerli dakikalık kazanç; maaş değişince geçmiş günler bozulmasın diye.
     private var activityRates: [String: Double]
-    /// Her açılışta gizli başlar; göz butonuyla açılır.
+    /// Göz butonuyla açılıp kapanır.
     var amountsHidden = true
+    /// Uygulama her açıldığında tutarlar gizli başlasın mı? (evden çalışanlar kapatabilir)
+    /// Not: @Observable sınıflarda didSet çalışmaz; değişiklik `persistPrivacyPreference()` ile kaydedilir.
+    var hidesAmountsOnLaunch: Bool
 
     @ObservationIgnored private let defaults: UserDefaults
     @ObservationIgnored private let calendar: Calendar
@@ -33,6 +37,7 @@ final class AppModel {
         static let quotes = "quotes"
         static let quotesUpdatedAt = "quotesUpdatedAt"
         static let notificationPreferences = "notificationPreferences"
+        static let hidesAmountsOnLaunch = "hidesAmountsOnLaunch"
         static let activeDays = "activeDays"
         static let reviewRequestedVersion = "reviewRequestedVersion"
     }
@@ -48,6 +53,8 @@ final class AppModel {
         quotes = Self.load([String: Quote].self, key: Key.quotes, from: defaults) ?? [:]
         quotesUpdatedAt = Self.load(Date.self, key: Key.quotesUpdatedAt, from: defaults)
         notificationPreferences = Self.load(NotificationPreferences.self, key: Key.notificationPreferences, from: defaults) ?? NotificationPreferences()
+        hidesAmountsOnLaunch = defaults.object(forKey: Key.hidesAmountsOnLaunch) as? Bool ?? true
+        amountsHidden = hidesAmountsOnLaunch
         engine = profile.map { EarningsEngine(profile: $0, calendar: calendar) }
         pruneOldActivities()
     }
@@ -71,10 +78,13 @@ final class AppModel {
         quotes = [:]
         quotesUpdatedAt = nil
         notificationPreferences = NotificationPreferences()
+        hidesAmountsOnLaunch = true
+        amountsHidden = true
         defaults.removeObject(forKey: Key.holdings)
         defaults.removeObject(forKey: Key.quotes)
         defaults.removeObject(forKey: Key.quotesUpdatedAt)
         defaults.removeObject(forKey: Key.notificationPreferences)
+        defaults.removeObject(forKey: Key.hidesAmountsOnLaunch)
         defaults.removeObject(forKey: Key.activityRates)
         defaults.removeObject(forKey: Key.profile)
         defaults.removeObject(forKey: Key.activityMinutes)
@@ -202,10 +212,14 @@ final class AppModel {
 
     // MARK: - Bildirimler
 
-    func setNotificationPreferences(_ preferences: NotificationPreferences) {
-        notificationPreferences = preferences
-        Self.save(preferences, key: Key.notificationPreferences, to: defaults)
+    func persistNotificationPreferences() {
+        Self.save(notificationPreferences, key: Key.notificationPreferences, to: defaults)
         Task { await rescheduleNotifications() }
+    }
+
+    func persistPrivacyPreference() {
+        defaults.set(hidesAmountsOnLaunch, forKey: Key.hidesAmountsOnLaunch)
+        if !hidesAmountsOnLaunch { amountsHidden = false }
     }
 
     func rescheduleNotifications() async {

@@ -11,6 +11,8 @@ struct SettingsView: View {
                 ProfileFormSections(profile: $draft)
                     .environment(\.hidesAmounts, model.amountsHidden)
 
+                PrivacySettingsSection()
+
                 NotificationSettingsSection()
 
                 Section("Hakkında") {
@@ -65,9 +67,9 @@ struct NotificationSettingsSection: View {
     var body: some View {
         @Bindable var model = model
         Section {
-            Toggle("Mesai bitimine 30 dk kala", isOn: binding(\.countdown))
-            Toggle("Gün sonu özeti", isOn: binding(\.endOfDaySummary))
-            Toggle("Espri bildirimleri 🚽", isOn: binding(\.jokes))
+            Toggle("Mesai bitimine 30 dk kala", isOn: $model.notificationPreferences.countdown)
+            Toggle("Gün sonu özeti", isOn: $model.notificationPreferences.endOfDaySummary)
+            Toggle("Espri bildirimleri 🚽", isOn: $model.notificationPreferences.jokes)
         } header: {
             Text("Bildirimler")
         } footer: {
@@ -78,27 +80,39 @@ struct NotificationSettingsSection: View {
                 Text("Bildirimler telefonunda hazırlanır, hiçbir yere veri gönderilmez. Hafta sonu, resmî tatil ve izin günlerinde gelmez.")
             }
         }
-        .task {
-            isDenied = await NotificationScheduler.authorizationStatus() == .denied
+        .task { await refreshStatus() }
+        .onChange(of: model.notificationPreferences) { _, preferences in
+            model.persistNotificationPreferences()
+            guard preferences.isAnyOn else { return }
+            Task {
+                _ = await NotificationScheduler.requestAuthorization()
+                await refreshStatus()
+            }
         }
     }
 
-    private func binding(_ keyPath: WritableKeyPath<NotificationPreferences, Bool>) -> Binding<Bool> {
-        Binding(
-            get: { model.notificationPreferences[keyPath: keyPath] },
-            set: { newValue in
-                var preferences = model.notificationPreferences
-                preferences[keyPath: keyPath] = newValue
-                if newValue {
-                    Task {
-                        let granted = await NotificationScheduler.requestAuthorization()
-                        isDenied = !granted
-                        if granted { model.setNotificationPreferences(preferences) }
-                    }
-                } else {
-                    model.setNotificationPreferences(preferences)
-                }
-            }
-        )
+    private func refreshStatus() async {
+        isDenied = await NotificationScheduler.authorizationStatus() == .denied
+    }
+}
+
+/// İş yerinde mi evde mi? Tutarların gizli başlayıp başlamayacağı.
+struct PrivacySettingsSection: View {
+    @Environment(AppModel.self) private var model
+
+    var body: some View {
+        @Bindable var model = model
+        Section {
+            Toggle("Açılışta tutarları gizle", isOn: $model.hidesAmountsOnLaunch)
+        } header: {
+            Text("Gizlilik")
+        } footer: {
+            Text(model.hidesAmountsOnLaunch
+                 ? "Uygulamayı her açtığında tutarlar ₺ **** olarak gelir; göz simgesine dokununca görünür. Ofiste ekranını gören olursa maaşın görünmez."
+                 : "Tutarlar her zaman açık gelir. Evden çalışıyorsan pratik; ofiste dikkat.")
+        }
+        .onChange(of: model.hidesAmountsOnLaunch) { _, _ in
+            model.persistPrivacyPreference()
+        }
     }
 }
