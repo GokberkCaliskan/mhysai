@@ -43,6 +43,7 @@ struct OnboardingView: View {
                 }
                 .scrollDismissesKeyboard(.interactively)
                 .scrollContentBackground(.hidden)
+                .contentMargins(.bottom, 96, for: .scrollContent)
                 .background(Theme.background)
                 .navigationTitle("Maaş ve mesai")
                 .safeAreaInset(edge: .bottom) {

@@ -14,6 +14,9 @@ struct SettingsView: View {
                 Section("Hakkında") {
                     NavigationLink("Nasıl hesaplanıyor?") { CalculationInfoView() }
                     NavigationLink("Gizlilik") { PrivacyPolicyView() }
+                    Link(destination: AppInfo.sourceCodeURL) {
+                        Label("Kaynak kodu (açık kaynak)", systemImage: "chevron.left.forwardslash.chevron.right")
+                    }
                     Link(destination: AppInfo.supportURL) {
                         Label("Destek ve geri bildirim", systemImage: "bubble.left.and.text.bubble.right")
                     }

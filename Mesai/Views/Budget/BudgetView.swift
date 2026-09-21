@@ -215,14 +215,14 @@ struct BudgetItemEditor: View {
                 }
 
                 Section("Simge") {
-                    LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 8), spacing: 8) {
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 44), spacing: 8)], spacing: 8) {
                         ForEach(BudgetItem.emojiChoices, id: \.self) { emoji in
                             Button {
                                 item.emoji = emoji
                             } label: {
                                 Text(emoji)
                                     .font(.title3)
-                                    .frame(width: 36, height: 36)
+                                    .frame(width: 40, height: 40)
                                     .background(item.emoji == emoji ? Theme.money.opacity(0.3) : .clear, in: .circle)
                             }
                             .buttonStyle(.plain)
@@ -263,15 +263,14 @@ struct BudgetItemEditor: View {
                     Button("Vazgeç") { dismiss() }
                 }
                 ToolbarItem(placement: .topBarTrailing) { PrivacyToggle() }
-            }
-            .safeAreaInset(edge: .bottom) {
-                Button("Kaydet") {
-                    model.upsert(item)
-                    dismiss()
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Kaydet") {
+                        model.upsert(item)
+                        dismiss()
+                    }
+                    .fontWeight(.semibold)
+                    .disabled(!item.isValid)
                 }
-                .buttonStyle(PrimaryButtonStyle())
-                .disabled(!item.isValid)
-                .padding()
             }
             .onAppear {
                 if item.name.isEmpty { nameFocused = true }

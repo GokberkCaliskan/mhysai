@@ -5,6 +5,8 @@ enum AppInfo {
     static let name = "Mhysai"
     /// Destek ve geri bildirim: GitHub Issues (herkese açık e-posta yayınlamadan).
     static let supportURL = URL(string: "https://github.com/GokberkCaliskan/mhysai/issues")!
+    /// Kaynak kodu herkese açık; "maaşımı görebiliyor musun?" sorusunun kanıtı.
+    static let sourceCodeURL = URL(string: "https://github.com/GokberkCaliskan/mhysai")!
     static let privacyPolicyURL = URL(string: "https://gokberkcaliskan.github.io/mhysai/privacy.html")!
     /// App Store uygulama kimliği (sayısal); App Store Connect kaydından sonra doldurulur, boşken "Değerlendir" gösterilmez.
     static let appStoreID = "6812497140"
