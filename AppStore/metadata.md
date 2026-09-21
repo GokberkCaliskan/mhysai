@@ -53,6 +53,17 @@ Hesaplamalar bilgilendirme amaçlıdır; bordro ya da vergi danışmanlığı ye
 maaş,sayaç,mesai,kazanç,brüt,net,vergi,bordro,kaytarma,tuvalet,saatlik,ücret,asgari,bütçe,kira
 
 ## Bu sürümdeki yenilikler
+
+**1.1.0**
+Yeni: Varlıklarım sekmesi! Altın, dolar, euro, ABD ve BIST hisseleri ile kripto ekle; güncel fiyatlarıyla kaç iş günü mesaiye denk geldiklerini gör. Şirket adıyla arama yapabilirsin ("nvidia", "aselsan").
+
+Yeni: Mesai bildirimleri. Mesai bitimine 30 dakika kala hatırlatma, gün sonu kazanç özeti ve her gün değişen espri bildirimleri.
+
+Yeni: "Açılışta tutarları gizle" ayarı. Evden çalışıyorsan kapatabilirsin.
+
+Düzeltmeler: Kalem eklerken taşan düzen, ayarlardaki anahtarların çalışmaması ve bazı durumlarda oluşan çökme giderildi.
+
+**1.0.0**
 İlk sürüm! Canlı maaş sayacı, kaytarma sayacı, brüt→net hesabı ve "Kaç Mesai?" ile tanış.
 
 ## Kategori
