@@ -144,7 +144,8 @@ struct AmountField: View {
     }
 
     private static func digits(_ value: Double) -> String {
-        value > 0 ? String(Int(value)) : ""
+        guard value.isFinite, value > 0 else { return "" }
+        return String(Int(value.clamped(to: 0...9_999_999_999)))
     }
 
     private static func format(_ value: Double) -> String {

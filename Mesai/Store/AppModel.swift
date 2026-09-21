@@ -2,12 +2,19 @@ import Foundation
 import Observation
 
 @Observable
+@MainActor
 final class AppModel {
     private(set) var profile: SalaryProfile?
     private(set) var engine: EarningsEngine?
     /// Gün anahtarı ("2026-09-15") → kaytarma türü → dakika
     private(set) var activityMinutes: [String: [String: Int]]
     private(set) var budgetItems: [BudgetItem]
+    private(set) var holdings: [Holding]
+    private(set) var quotes: [String: Quote]
+    private(set) var quotesUpdatedAt: Date?
+    private(set) var quoteFailure: QuoteFailure?
+    private(set) var isRefreshingQuotes = false
+    private(set) var notificationPreferences: NotificationPreferences
     /// Gün anahtarı → o gün geçerli dakikalık kazanç; maaş değişince geçmiş günler bozulmasın diye.
     private var activityRates: [String: Double]
     /// Her açılışta gizli başlar; göz butonuyla açılır.
@@ -15,12 +22,17 @@ final class AppModel {
 
     @ObservationIgnored private let defaults: UserDefaults
     @ObservationIgnored private let calendar: Calendar
+    @ObservationIgnored var quoteService = QuoteService()
 
     private enum Key {
         static let profile = "salaryProfile"
         static let activityMinutes = "activityMinutes"
         static let budgetItems = "budgetItems"
         static let activityRates = "activityRates"
+        static let holdings = "holdings"
+        static let quotes = "quotes"
+        static let quotesUpdatedAt = "quotesUpdatedAt"
+        static let notificationPreferences = "notificationPreferences"
         static let activeDays = "activeDays"
         static let reviewRequestedVersion = "reviewRequestedVersion"
     }
@@ -32,6 +44,10 @@ final class AppModel {
         activityMinutes = Self.load([String: [String: Int]].self, key: Key.activityMinutes, from: defaults) ?? [:]
         budgetItems = Self.load([BudgetItem].self, key: Key.budgetItems, from: defaults) ?? []
         activityRates = Self.load([String: Double].self, key: Key.activityRates, from: defaults) ?? [:]
+        holdings = Self.load([Holding].self, key: Key.holdings, from: defaults) ?? []
+        quotes = Self.load([String: Quote].self, key: Key.quotes, from: defaults) ?? [:]
+        quotesUpdatedAt = Self.load(Date.self, key: Key.quotesUpdatedAt, from: defaults)
+        notificationPreferences = Self.load(NotificationPreferences.self, key: Key.notificationPreferences, from: defaults) ?? NotificationPreferences()
         engine = profile.map { EarningsEngine(profile: $0, calendar: calendar) }
         pruneOldActivities()
     }
@@ -42,6 +58,7 @@ final class AppModel {
         self.profile = profile
         engine = EarningsEngine(profile: profile, calendar: calendar)
         Self.save(profile, key: Key.profile, to: defaults)
+        Task { await rescheduleNotifications() }
     }
 
     func resetAll() {
@@ -50,6 +67,14 @@ final class AppModel {
         activityMinutes = [:]
         activityRates = [:]
         budgetItems = []
+        holdings = []
+        quotes = [:]
+        quotesUpdatedAt = nil
+        notificationPreferences = NotificationPreferences()
+        defaults.removeObject(forKey: Key.holdings)
+        defaults.removeObject(forKey: Key.quotes)
+        defaults.removeObject(forKey: Key.quotesUpdatedAt)
+        defaults.removeObject(forKey: Key.notificationPreferences)
         defaults.removeObject(forKey: Key.activityRates)
         defaults.removeObject(forKey: Key.profile)
         defaults.removeObject(forKey: Key.activityMinutes)
@@ -134,6 +159,57 @@ final class AppModel {
     func delete(_ item: BudgetItem) {
         budgetItems.removeAll { $0.id == item.id }
         Self.save(budgetItems, key: Key.budgetItems, to: defaults)
+    }
+
+    // MARK: - Varlıklar
+
+    var portfolioValue: Double {
+        PortfolioValuation.total(of: holdings, quotes: quotes)
+    }
+
+    func upsert(_ holding: Holding) {
+        if let index = holdings.firstIndex(where: { $0.id == holding.id }) {
+            holdings[index] = holding
+        } else {
+            holdings.append(holding)
+        }
+        Self.save(holdings, key: Key.holdings, to: defaults)
+    }
+
+    func delete(_ holding: Holding) {
+        holdings.removeAll { $0.id == holding.id }
+        Self.save(holdings, key: Key.holdings, to: defaults)
+    }
+
+    /// Eksik ya da 15 dakikadan eski fiyatları yeniler.
+    func refreshQuotesIfNeeded(force: Bool = false) async {
+        let symbols = PortfolioValuation.requiredSymbols(for: holdings)
+        guard !symbols.isEmpty, !isRefreshingQuotes else { return }
+        if !force, let updated = quotesUpdatedAt, AppClock.now.timeIntervalSince(updated) < 15 * 60,
+           symbols.allSatisfy({ quotes[$0] != nil }) { return }
+
+        isRefreshingQuotes = true
+        let result = await quoteService.fetch(symbols: symbols)
+        isRefreshingQuotes = false
+
+        quoteFailure = result.failure
+        guard !result.quotes.isEmpty else { return }
+        quotes.merge(result.quotes) { _, new in new }
+        quotesUpdatedAt = AppClock.now
+        Self.save(quotes, key: Key.quotes, to: defaults)
+        Self.save(quotesUpdatedAt, key: Key.quotesUpdatedAt, to: defaults)
+    }
+
+    // MARK: - Bildirimler
+
+    func setNotificationPreferences(_ preferences: NotificationPreferences) {
+        notificationPreferences = preferences
+        Self.save(preferences, key: Key.notificationPreferences, to: defaults)
+        Task { await rescheduleNotifications() }
+    }
+
+    func rescheduleNotifications() async {
+        await NotificationScheduler.reschedule(engine: engine, preferences: notificationPreferences)
     }
 
     // MARK: - Değerlendirme isteği

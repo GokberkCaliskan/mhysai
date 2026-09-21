@@ -110,6 +110,7 @@ final class EarningsEngineTests: XCTestCase {
         XCTAssertEqual(e.status(at: date(2026, 9, 19, 12)), .dayOff(reason: "Hafta sonu", nextStart: date(2026, 9, 21, 9)))
     }
 
+    @MainActor
     func testActivityMinutes() {
         let suite = "EarningsEngineTests.activity"
         let defaults = UserDefaults(suiteName: suite)!
@@ -129,6 +130,7 @@ final class EarningsEngineTests: XCTestCase {
         XCTAssertEqual(AppModel(defaults: defaults, calendar: calendar).minutes(for: toilet, on: day), 30)
     }
 
+    @MainActor
     func testActivityEarningsUseMonthlyRate() {
         let suite = "EarningsEngineTests.earnings"
         let defaults = UserDefaults(suiteName: suite)!
@@ -157,6 +159,7 @@ final class EarningsEngineTests: XCTestCase {
         XCTAssertNil(e.dateWhenEarned(70_000, inMonthOf: date(2026, 9, 15)))
     }
 
+    @MainActor
     func testEquivalents() {
         let suite = "EarningsEngineTests.equivalents"
         let defaults = UserDefaults(suiteName: suite)!
@@ -229,6 +232,7 @@ final class EarningsEngineTests: XCTestCase {
         XCTAssertEqual(profile.amountType, .net)
     }
 
+    @MainActor
     func testPastActivityEarningsSurviveSalaryChange() {
         let suite = "EarningsEngineTests.snapshot"
         let defaults = UserDefaults(suiteName: suite)!

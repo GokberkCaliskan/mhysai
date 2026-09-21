@@ -6,8 +6,8 @@ struct PrivacyPolicyView: View {
             VStack(alignment: .leading, spacing: 18) {
                 block("Kısaca", "\(AppInfo.name) hiçbir kişisel verini toplamaz, saklamaz ya da paylaşmaz. Hesap, sunucu, reklam ve analiz aracı yoktur.")
                 block("Girdiğin bilgiler", "Maaşın, mesai saatlerin, kaytarma süreleri, giderlerin ve isteklerin yalnızca bu cihazda, uygulamanın kendi alanında saklanır. Uygulamayı silersen tüm veriler de silinir.")
-                block("İnternet", "Uygulama çalışmak için internete ihtiyaç duymaz ve hiçbir yere veri göndermez. Uçak modunda da her özelliği çalışır.")
-                block("Kanıtı nasıl görürsün?", "Uygulamanın tüm kaynak kodu herkese açık: Ayarlar → Kaynak kodu. Dilersen telefonunu uçak moduna alıp uygulamanın aynen çalıştığını görebilirsin.")
+                block("İnternet", "Uygulama yalnızca \"Varlıklarım\" sekmesinde fiyat çekerken internete çıkar. Gönderilen tek şey sembol adıdır (ör. NVDA, GC=F); maaşın, giderlerin ve kaç adet varlığın olduğu asla gönderilmez. Varlık eklemezsen uygulama hiç internete çıkmaz.")
+                block("Kanıtı nasıl görürsün?", "Uygulamanın tüm kaynak kodu herkese açık: Ayarlar → Kaynak kodu. Telefonu uçak moduna alırsan sayaç, kaytarma ve gider hesapları aynen çalışmaya devam eder; yalnızca fiyatlar güncellenemez.")
                 block("Paylaşım", "Paylaşım kartını yalnızca sen \"Paylaş\" dediğinde, seçtiğin uygulamaya gönderilir.")
                 block("Hesaplamalar", "Maaş, vergi ve SGK hesapları bilgilendirme amaçlıdır; bordro, vergi ya da finansal danışmanlık yerine geçmez. Gerçek bordronla farklar olabilir.")
                 block("İletişim", "Soru ve önerilerini Ayarlar → Destek ve geri bildirim bağlantısından iletebilirsin.")

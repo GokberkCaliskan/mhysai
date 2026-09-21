@@ -45,6 +45,7 @@ struct RootView: View {
                 model.amountsHidden = true
             case .active:
                 if model.registerActiveDay() { requestReview() }
+                Task { await model.rescheduleNotifications() }
             default:
                 break
             }
@@ -63,6 +64,8 @@ struct RootView: View {
                     .tabItem { Label("Kaytarma", systemImage: "cup.and.saucer.fill") }
                 BudgetView()
                     .tabItem { Label("Kaç Mesai?", systemImage: "hourglass") }
+                PortfolioView()
+                    .tabItem { Label("Varlıklarım", systemImage: "chart.line.uptrend.xyaxis") }
                 SettingsView()
                     .tabItem { Label("Ayarlar", systemImage: "gearshape.fill") }
             }
